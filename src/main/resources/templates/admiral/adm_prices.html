@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="ua">
+<head>
+    <meta charset="UTF-8">
+    <title>Ціни - Адміністративна панель uatocz</title>
+
+
+    <!--JQuery-->
+    <script src="http://code.jquery.com/jquery-3.2.1.js"></script>
+
+    <!--Ajax-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <!--END//BOOTSTRAP-->
+
+    <!-- Custom styles for this template -->
+    <!--<link href="css/table_style.css.css" rel="stylesheet">-->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/4.4.0/bootbox.min.js"></script>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+    <link href="../static/css/adm_cover.css" rel="stylesheet">
+
+
+</head>
+
+<body>
+
+<nav class="navbar navbar-default navbar-static-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle navbar-toggle-sidebar collapsed">
+                MENU
+            </button>
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">
+                UAtoCZ
+            </a>
+            <span>Адміністративна панель</span>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="http://www.pingpong-labs.com" target="_blank">Технічна підтримка</a></li>
+                <li>
+                    <a href="http://www.pingpong-labs.com" target="_blank">Вийти</a>
+                </li>
+            </ul>
+        </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+</nav>
+<div class="container-fluid main-container">
+    <div class="col-md-2 sidebar">
+        <div class="row">
+            <!-- uncomment code for absolute positioning tweek see top comment in css -->
+            <div class="absolute-wrapper"></div>
+            <!-- Menu -->
+            <div class="side-menu">
+                <nav class="navbar navbar-default" role="navigation">
+                    <!-- Main Menu -->
+                    <div class="side-menu-container">
+                        <ul class="nav navbar-nav">
+                            <li><a href="admiral/admin.html"><span class="glyphicon glyphicon-home"></span> Головна</a></li>
+                            <li class="active"><a href="#"><span class="glyphicon glyphicon-usd"></span> Ціни</a></li>
+                            <li><a href="adm_schedule.html"><span class="glyphicon glyphicon-calendar"></span> Розклад</a></li>
+                            <li><a href="#"><span class="glyphicon glyphicon-road"></span> Автомобілі</a></li>
+                            <li><a href="#"><span class="glyphicon glyphicon-list-alt"></span> Контакти</a></li>
+                        </ul>
+                    </div><!-- /.navbar-collapse -->
+                </nav>
+
+            </div>
+        </div>
+    </div>
+    <div class="col-md-10 content">
+        <div class="message-block"></div>
+
+        <div class="table-responsive" style="text-align: center">
+
+            <h3 style="text-align: center">Редагувати існуючі ціни</h3>
+
+
+            <table class="table">
+                <thead id="header-thead">
+                <!--<tr>-->
+                    <!--<th>id</th>-->
+                    <!--<th style="text-align: center">Назва</th>-->
+                    <!--<th style="text-align: center">Опис</th>-->
+                    <!--<th style="text-align: center">Ціна</th>-->
+                    <!--<th style="text-align: center">Дія</th>-->
+                <!--</tr>-->
+                </thead>
+                <tbody class="all-prices">
+                <!--<tr>-->
+                    <!--<th scope="row">1</th>-->
+                    <!--<td><textarea style="text-align: center" name="textarea" cols="10" rows="0.5">Проїзд</textarea></td>-->
+                    <!--<td><textarea style="text-align: center" name="textarea" cols="50" rows="5">Одна дорожня сумка</textarea></td>-->
+                    <!--<td><textarea style="text-align: center" name="textarea" cols="10" rows="0.5">40$ - 60$</textarea></td>-->
+                    <!--<td>-->
+                        <!--<button class="btn btn-primary">Зберегти</button>-->
+                        <!--<br>-->
+                        <!--<button class="btn btn-danger" style="margin-top: 20px">Видалити</button>-->
+                    <!--</td>-->
+                <!--</tr>-->
+
+
+
+                </tbody>
+            </table>
+
+
+            <h3 style="text-align: center">Створити нову ціну</h3>
+
+
+            <table class="table">
+                <thead>
+                <tr>
+                    <th style="text-align: center">Назва</th>
+                    <th style="text-align: center">Опис</th>
+                    <th style="text-align: center">Ціна</th>
+                    <th style="text-align: center">Дія</th>
+                </tr>
+                </thead>
+
+                <tbody>
+                <tr style="text-align: center">
+                    <!--Назва-->
+                    <td><textarea id="CName" style="text-align: center" name="textarea" cols="10"
+                                              rows="0.5"></textarea>
+                    </td>
+                    <!--Дата-->
+                    <td><textarea id="CDescription" style="text-align: center" name="textarea" cols="50"
+                                              rows="5"></textarea>
+                    </td>
+                    <!--Ціна-->
+                    <td><textarea id="CPrice" style="text-align: center" name="textarea" cols="10"
+                                  rows="0.5"></textarea></td>
+
+                    <td>
+                        <button class="btn btn-primary" id="create-btn" style="background-color: green">Створити
+                        </button>
+                        <br>
+                    </td>
+
+                    <!--<td><textarea id=\""+ENameID+"\" style=\"text-align: center\" name=\"textarea\" cols=\"10\" rows=\"0.5\">"+response[i].name+"</textarea></td>\n" +-->
+                    <!--"                    <td><textarea id=\""+EDescriptionID+"\" style=\"text-align: center\" name=\"textarea\" cols=\"50\" rows=\"5\">"+response[i].description+"</textarea></td>\n" +-->
+                    <!--"                    <td><textarea id=\""+EPrice+"\" style=\"text-align: center\" name=\"textarea\" cols=\"10\" rows=\"0.5\">"+response[i].price+"</textarea></td>\n" +-->
+
+
+                </tr>
+                </tbody>
+            </table>
+
+
+
+        </div>
+    </div>
+    <footer class="pull-left footer">
+        <p class="col-md-12">
+        <hr class="divider">
+        &COPY; 2018 <a href="http://www.doroshevych.pp.ua">DV</a>
+        </p>
+    </footer>
+</div>
+</body>
+<script>
+    $(function () {
+        $('.navbar-toggle-sidebar').click(function () {
+            $('.navbar-nav').toggleClass('slide-in');
+            $('.side-body').toggleClass('body-slide-in');
+            $('#search').removeClass('in').addClass('collapse').slideUp(200);
+        });
+
+        $('#search-trigger').click(function () {
+            $('.navbar-nav').removeClass('slide-in');
+            $('.side-body').removeClass('body-slide-in');
+            $('.search-input').focus();
+        });
+
+        getAllPrices();
+    });
+
+
+
+    //..START.. Створення подорожі
+
+    function getAllPrices() {
+        $.ajax({
+            "url": "http://localhost:8080/price/all",
+            'method': 'GET',
+            'contentType': 'application/json',
+            'dataType': 'json',
+            'success': function (response) {
+
+
+                if (response.length > 0) {
+                    $('#header-thead').append(" <tr>\n" +
+                        "                    <th>id</th>\n" +
+                        "                    <th style=\"text-align: center\">Назва</th>\n" +
+                        "                    <th style=\"text-align: center\">Опис</th>\n" +
+                        "                    <th style=\"text-align: center\">Ціна</th>\n" +
+                        "                    <th style=\"text-align: center\">Дія</th>\n" +
+                        "                </tr>");
+                    for (var i = 0; i < response.length; i++) {
+                        var EDNameID = "EDName-"+response[i].id;
+                        var EDDescriptionID = "EDDescription-"+response[i].id;
+                        var EDPriceID = "EDPrice-"+response[i].id;
+
+                        $('.all-prices').append("<tr>\n" +
+                            "                    <th scope=\"row\">"+response[i].id+"</th>\n" +
+                            "                    <td><textarea id=\""+EDNameID+"\" style=\"text-align: center\" name=\"textarea\" cols=\"10\" rows=\"0.5\">"+response[i].name+"</textarea></td>\n" +
+                            "                    <td><textarea id=\""+EDDescriptionID+"\" style=\"text-align: center\" name=\"textarea\" cols=\"50\" rows=\"5\">"+response[i].description+"</textarea></td>\n" +
+                            "                    <td><textarea id=\""+EDPriceID+"\" style=\"text-align: center\" name=\"textarea\" cols=\"10\" rows=\"0.5\">"+response[i].price+"</textarea></td>\n" +
+                            "                    <td>\n" +
+                            "                        <button class=\"btn btn-primary edit-btn\" id=\"id-"+response[i].id+"\">Зберегти</button>\n" +
+                            "                        <br>\n" +
+                            "                        <button class=\"btn btn-danger delete-btn\" id=\""+response[i].id+"\" style=\"margin-top: 20px\">Видалити</button>\n" +
+                            "                    </td>\n" +
+                            "                </tr>");
+                    }
+                } else {
+                    $('.all-prices').append("<h2 style=\"color: darkslateblue\">Немає існуючих цін</h2>");
+                }
+
+            },
+            'error': function (error) {
+                $('.all-prices').append("<h2 style=\"color: red\">Невідома помилка!</h2>");
+                console.log(error);
+            }
+        });
+    };
+
+
+    $('#create-btn').click(function () {
+        var CName = $('#CName').val();
+        var CDescription = $('#CDescription').val();
+        var CPrice = $('#CPrice').val();
+
+        var Schedule = {
+            'name': CName,
+            'description': CDescription,
+            'price': CPrice
+        };
+
+
+        $.ajax({
+            'url': 'http://localhost:8080/admiral/price/create',
+            'type': "PUT",
+            'contentType': 'application/json;charset=utf-8',
+            'data': JSON.stringify(Schedule),
+            'success': function (response) {
+                getEventsMessage("Ціну успішно <b>створено!</b>","success");
+            },
+            'error': function (request, status, error, html) {
+                var statusCode = request.status;
+                getEventsMessage("Помилка! <b>Не вдалось створити ціну</b>, спробуйте ще раз!","error",statusCode);
+            }
+        });
+
+    });
+
+
+    //..START.. Редагування подорожі
+
+
+    $(document).on('click', '.edit-btn', function () {
+
+        // var id = $(this).attr("id");
+        var str = $(this).attr("id");
+        var id = str.split('-')[1];
+
+
+        var name = $("#EDName-"+id+"").val();
+        var description = $("#EDDescription-"+id+"").val();
+        var price = $("#EDPrice-"+id+"").val();
+
+
+
+        var Price = {
+            'id': id,
+            'name': name,
+            'description': description,
+            'price': price
+        };
+
+        console.log(Price.name);
+
+        $.ajax({
+            'url': 'http://localhost:8080/admiral/price/edit',
+            'type': "POST",
+            'contentType': 'application/json;charset=utf-8',
+            'data': JSON.stringify(Price),
+            'success': function (response) {
+                getEventsMessage("Ціну успішно <b>редаговано!</b>","success");
+            },
+            'error': function (request, status, error, html) {
+                var statusCode = request.status;
+                getEventsMessage("Помилка! <b>Не вдалось редагувати ціну</b>, спробуйте ще раз!","error",statusCode);
+            }
+        });
+
+    });
+
+    //..STOP.. Редагування подорожі
+
+
+
+
+    //..START.. Видалення подорожі
+    $(document).on('click', '.delete-btn', function () {
+
+        var id = $(this).attr("id");
+
+
+        //якщо так - то видаляємо
+
+
+        bootbox.confirm({
+            message: "Ви впевнені, що хочете видалити ціну з ID - "+id+"?",
+            buttons: {
+                confirm: {
+                    label: 'Так',
+                    className: 'btn-success'
+                },
+                cancel: {
+                    label: 'Ні',
+                    className: 'btn-danger'
+                }
+            },
+            callback: function (result) {
+                if (result) {
+                    $.ajax({
+                        'url': 'http://localhost:8080/admiral/price/delete',
+                        'type': "DELETE",
+                        'contentType': 'application/json;charset=utf-8',
+                        'data': JSON.stringify(id),
+                        'success': function (response) {
+                            getEventsMessage("Ціну успішно <b>видалено</b>","success");
+                        },
+                        'error': function (request, status, error, html) {
+                            var statusCode = request.status;
+                            getEventsMessage("Помилка!<b>Ціну не видалено</b>, спробуйте ще раз!","error",);
+                        }
+                    });
+                }
+            }
+        });
+
+    });
+
+    //..STOP.. Видалення подорожі
+
+    // Показати сповіщення вдалого/невдалого створення/видалення подорожі
+    function getEventsMessage(message,res,status) {
+        if (res === "success") {
+            $('.all-prices').empty();
+            $('#header-thead').empty();
+            getAllPrices();
+            $('.message-block').append('<div class="alert alert-success alert-dismissible" role="alert">\n' +
+                '            <button type="button" class="close" data-dismiss="alert" aria-label="Close">\n' +
+                '                <span aria-hidden="true">&times;</span></button>\n' + message +
+                '            \n' +
+                '        </div>');
+        }else{
+            $('.message-block').append('<div class="alert alert-danger alert-dismissible" role="alert">\n' +
+                '            <button type="button" class="close" data-dismiss="alert" aria-label="Close">\n' +
+                '                <span aria-hidden="true">&times;</span></button>\n' + message + " <h2><b>Status: "+ status +"</b></h2>"+
+                '            \n' +
+                '        </div>');
+        }
+
+
+
+        window.scrollTo(0, 0);
+
+    }
+</script>
+
+</html>

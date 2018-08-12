@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="ua">
+<head>
+    <meta charset="UTF-8">
+    <title>Ціни - Пасажирські перевезення Україна-Чехія</title>
+
+    <!--JQuery-->
+    <script src="http://code.jquery.com/jquery-3.2.1.js"></script>
+
+    <!--START//BOOTSTRAP-->
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    <!--END//BOOTSTRAP-->
+
+
+    <!--Ajax-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <!--END//BOOTSTRAP-->
+
+    <!--Pulling Awesome Font -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="../../static/css/cover.css" rel="stylesheet">
+    <link href="../../static/css/contact_style.css" rel="stylesheet">
+
+
+</head>
+
+<body>
+<div class="cover-container header-container">
+    <div class="inner">
+        <div class="col-md-12" style="float: right">
+            <ul class="social-network social-circle">
+                <li><a href="#" class="icoFacebook" title="Facebook"><i class="fa fa-facebook"></i></a></li>
+                <li><a href="#" class="icoInstagram" title="Instagram"><i class="fa fa-instagram"></i></a></li>
+                <li><a href="#" class="icoVK" title="Vk"><i class="fa fa-vk"></i></a></li>
+                <li><a href="#" class="icoOdnoklassniki" title="Odnoklassniki"><i class="fa fa-odnoklassniki"></i></a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="inner">
+        <h3 class="masthead-brand">
+            <span style="color: blue">U</span>
+            <span style="color: yellow">A</span>
+            <span>to</span>
+            <span style="color: red">C</span>
+            <span style="color: blue">Z</span>
+        </h3>
+        <ul class="nav masthead-nav">
+            <li><a href="/">Домашня</a></li>
+            <li class="active"><a href="/prices">Ціни</a></li>
+            <li><a href="/schedule">Розклад</a></li>
+            <!--<li><a href="cars.html">Автомобілі</a></li>-->
+            <!--<li><a href="cars.html">Водії</a></li>-->
+        </ul>
+    </div>
+</div>
+
+<div class="mycontainer cover-container container" style="background: black;opacity: 0.5;width: 70%;padding: 50px">
+    <!--<div class="jumbotron" style="background: black;opacity: 0.5;">-->
+    <h3>Ціни</h3>
+
+    <div class="table-responsive" style="text-align: center">
+
+        <table class="table">
+            <thead class="header-thead">
+            <tr>
+                <th style="text-align: center">Назва</th>
+                <th style="text-align: center">Опис</th>
+                <th style="text-align: center">Ціна</th>
+            </tr>
+            </thead>
+            <tbody id="all-prices">
+            <!--<tr>-->
+                <!--<td>Проїзд</td>-->
+                <!--<td>Одна дорожня сумка, Одна дорожня сумка, Одна дорожня сумка, Одна дорожня сумка,-->
+                    <!--Одна дорожня сумка,Одна дорожня сумка,Одна дорожня сумка,Одна дорожня сумка,-->
+                    <!--Одна дорожня сумка,Одна дорожня сумка,Одна дорожня сумка,Одна дорожня сумка,-->
+                    <!--Одна дорожня сумка,</td>-->
+                <!--<td>40$</td>-->
+            <!--</tr>-->
+
+            </tbody>
+        </table>
+    </div>
+    <!--</div>-->
+
+</div>
+
+<div class="cover-container">
+    <div class="mastfoot" style="position: static;margin-top: 50px;">
+        <div class="inner">
+            <p>©2018 uatocz.com
+            <p>Всі права захищено!</p></p>
+            <p style="opacity: 0.2">Developer: <a href="http://www.doroshevych.pp.ua">Vadym Doroshevych</a></p>
+        </div>
+    </div>
+
+
+</div>
+</body>
+<script>
+    $(function () {
+        $.ajax({
+            "url": "http://localhost:8080/price/all",
+            'method': 'GET',
+            'contentType': 'application/json',
+            'dataType': 'json',
+            'success': function(response) {
+
+                if(response.length > 0){
+                    $('#header-thead').append("<tr>\n" +
+                        "                <th style=\"text-align: center\">Назва</th>\n" +
+                        "                <th style=\"text-align: center\">Опис</th>\n" +
+                        "                <th style=\"text-align: center\">Ціна</th>\n" +
+                        "            </tr>");
+                    for (var i = 0; i < response.length; i++) {
+                        $('#all-prices').append("<tr>\n" +
+                            "                <td>"+response[i].name+"</td>\n" +
+                            "                <td>"+response[i].description+"</td>\n" +
+                            "                <td>"+response[i].price+"</td>\n" +
+                            "            </tr>");
+                    }
+                }else{
+                    $('#all-schedules').append("<h2 style=\"color: darkslateblue\">На даний момент немає існуючих цін</h2>");
+                }
+
+            },
+            'error': function(error) {
+                $('.all-prices').append("Невідома помилка!");
+            }
+        });
+    });
+</script>
+</html>

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="ua">
+<head>
+    <meta charset="UTF-8">
+    <title>Розклад поїздок - Пасажирські перевезення Україна-Чехія</title>
+
+    <!--JQuery-->
+    <script src="http://code.jquery.com/jquery-3.2.1.js"></script>
+
+    <!--START//BOOTSTRAP-->
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    <!--END//BOOTSTRAP-->
+
+    <!--Ajax-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <!--END//BOOTSTRAP-->
+
+    <!--Pulling Awesome Font -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="../../static/css/cover.css" rel="stylesheet">
+    <link href="../../static/css/contact_style.css" rel="stylesheet">
+
+
+</head>
+
+<body>
+<div class="cover-container header-container">
+    <div class="inner">
+        <div class="col-md-12" style="float: right">
+            <ul class="social-network social-circle">
+                <li><a href="#" class="icoFacebook" title="Facebook"><i class="fa fa-facebook"></i></a></li>
+                <li><a href="#" class="icoInstagram" title="Instagram"><i class="fa fa-instagram"></i></a></li>
+                <li><a href="#" class="icoVK" title="Vk"><i class="fa fa-vk"></i></a></li>
+                <li><a href="#" class="icoOdnoklassniki" title="Odnoklassniki"><i class="fa fa-odnoklassniki"></i></a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="inner">
+        <h3 class="masthead-brand">
+            <span style="color: blue">U</span>
+            <span style="color: yellow">A</span>
+            <span>to</span>
+            <span style="color: red">C</span>
+            <span style="color: blue">Z</span>
+        </h3>
+        <ul class="nav masthead-nav">
+            <li><a href="/">Домашня</a></li>
+            <li><a href="/prices">Ціни</a></li>
+            <li class="active"><a href="/schedule">Розклад</a></li>
+        </ul>
+    </div>
+</div>
+
+<div class="mycontainer container" style="background: black;opacity: 0.5;width: 70%">
+    <h3>Розклад пасажирських перевезень станом на 12.06.2018</h3>
+
+    <div class="table-responsive">
+    <table class="table table-responsive table-bordered table-inverse">
+        <thead id="header-thead">
+        <!--//тут буде виведено заголовок таблиці-->
+        </thead>
+        <tbody id="all-schedules">
+        <!--//тут буде виведене тіло таблиці (schedule/all)-->
+        </tbody>
+    </table>
+    </div>
+</div>
+
+<div class="cover-container">
+    <div class="mastfoot" style="position: static;margin-top: 50px;">
+        <div class="inner">
+            <p>©2018 uatocz.com
+            <p>Всі права захищено!</p></p>
+            <p style="opacity: 0.2">Developer: <a href="http://www.doroshevych.pp.ua">Vadym Doroshevych</a></p>
+        </div>
+    </div>
+
+
+</div>
+</body>
+<script>
+    $(function () {
+        $.ajax({
+            "url": "http://localhost:8080/schedule/all",
+            'method': 'GET',
+            'contentType': 'application/json',
+            'dataType': 'json',
+            'success': function(response) {
+
+                if(response.length > 0){
+                    $('#header-thead').append(" <tr>\n" +
+                        "            <th style=\"text-align: center\">Дата/Час відправлення</th>\n" +
+                        "            <th style=\"text-align: center\">Дата/Час прибуття(+-5 годин)</th>\n" +
+                        "            <th style=\"text-align: center\">Місце відправлення</th>\n" +
+                        "            <th style=\"text-align: center\">Місце прибуття</th>\n" +
+                        "            <th style=\"text-align: center\">Маршрут</th>\n" +
+                        "            <th style=\"text-align: center\">Автомобіль</th>\n" +
+                        "            <th style=\"text-align: center\">К-сть вільних місць</th>\n" +
+                        "            <th style=\"text-align: center\">Ціна</th>\n" +
+                        "            <th style=\"text-align: center\">Водій</th>\n" +
+                        "        </tr>");
+                    for (var i = 0; i < response.length; i++) {
+                        $('#all-schedules').append("<tr>\n" +
+                            "            <!--Дата-->\n" +
+                            "            <th style='text-align: center' scope=\"row\">"+response[i].dateAndTimeOfDeparture+"</th>\n" +
+                            "            <!--Дата-->\n" +
+                            "            <th style='text-align: center' scope=\"row\">"+response[i].dateAndTimeOfArrival+"</th>\n" +
+                            "            <!--Місце відправлення-->\n" +
+                            "            <td>"+response[i].placeOfDeparture+"</td>\n" +
+                            "            <!--Місце прибуття-->\n" +
+                            "            <td>"+response[i].placeOfArrival+"</td>\n" +
+                            "            <!--Маршрут-->\n" +
+                            "            <td>"+response[i].route+"</td>\n" +
+                            "            <!--Назва авто-->\n" +
+                            "            <td>"+response[i].car+"</td>\n" +
+                            "            <!--К-сть вільних місць-->\n" +
+                            "            <td>"+response[i].freeSeats+"</td>\n" +
+                            "            <!--Ціна-->\n" +
+                            "            <td>"+response[i].price+"</td>\n" +
+                            "            <!--Водій-->\n" +
+                            "            <td>"+response[i].driver+"</td>\n" +
+                            "        </tr>");
+                    }
+                }else{
+                    $('#all-schedules').append("<h2 style=\"color: darkslateblue\">На даний момент немає існуючих поїздок</h2>");
+                }
+
+            },
+            'error': function(error) {
+                $('.all-schedules').append("Невідома помилка!");
+            }
+        });
+    });
+</script>
+
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ua">
+<head>
+    <meta charset="UTF-8">
+    <title>Головна - Адміністративна панель uatocz</title>
+
+
+    <!--JQuery-->
+    <script src="http://code.jquery.com/jquery-3.2.1.js"></script>
+
+    <!--Ajax-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <!--END//BOOTSTRAP-->
+
+    <!-- Custom styles for this template -->
+    <link href="css/table_style.css.css" rel="stylesheet">
+
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+    <link href="../static/css/adm_cover.css" rel="stylesheet">
+
+
+</head>
+
+<body>
+
+<nav class="navbar navbar-default navbar-static-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle navbar-toggle-sidebar collapsed">
+                MENU
+            </button>
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="admin.html">
+                UAtoCZ
+            </a>
+            <span>Адміністративна панель</span>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="http://www.pingpong-labs.com" target="_blank">Технічна підтримка</a></li>
+                <li>
+                    <a href="http://www.pingpong-labs.com" target="_blank">Вийти</a>
+                </li>
+            </ul>
+        </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+</nav>
+<div class="container-fluid main-container">
+    <div class="col-md-2 sidebar">
+        <div class="row">
+            <!-- uncomment code for absolute positioning tweek see top comment in css -->
+            <div class="absolute-wrapper"></div>
+            <!-- Menu -->
+            <div class="side-menu">
+                <nav class="navbar navbar-default" role="navigation">
+                    <!-- Main Menu -->
+                    <div class="side-menu-container">
+                        <ul class="nav navbar-nav">
+                            <li class="active"><a href="admin.html"><span class="glyphicon glyphicon-home"></span> Головна</a></li>
+                            <li><a href="adm_prices.html"><span class="glyphicon glyphicon-usd"></span> Ціни</a></li>
+                            <li><a href="#"><span class="glyphicon glyphicon-calendar"></span>
+                                Розклад</a></li>
+                            <li><a href="#"><span class="glyphicon glyphicon-road"></span> Автомобілі</a></li>
+                            <li><a href="#"><span class="glyphicon glyphicon-list-alt"></span> Контакти</a></li>
+                        </ul>
+                    </div><!-- /.navbar-collapse -->
+                </nav>
+
+            </div>
+        </div>
+    </div>
+    <div class="col-md-10 content">
+
+
+    </div>
+    <footer class="pull-left footer">
+        <p class="col-md-12">
+        <hr class="divider">
+        &COPY; 2018 <a href="http://www.doroshevych.pp.ua">DV</a>
+        </p>
+    </footer>
+</div>
+</body>
+<script>
+    $(function () {
+        $('.navbar-toggle-sidebar').click(function () {
+            $('.navbar-nav').toggleClass('slide-in');
+            $('.side-body').toggleClass('body-slide-in');
+            $('#search').removeClass('in').addClass('collapse').slideUp(200);
+        });
+
+        $('#search-trigger').click(function () {
+            $('.navbar-nav').removeClass('slide-in');
+            $('.side-body').removeClass('body-slide-in');
+            $('.search-input').focus();
+        });
+    });
+</script>
+
+</html>
